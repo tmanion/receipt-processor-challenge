@@ -57,6 +57,7 @@ func processPointsForReceipt(c *gin.Context) {
 	var receiptToProcess receipt
 
 	if err := c.BindJSON(&receiptToProcess); err != nil {
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"description": "The receipt is invalid"})
 		return
 	}
 
