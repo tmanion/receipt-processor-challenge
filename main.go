@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 type item struct {
@@ -33,7 +34,7 @@ func getReceipts(c *gin.Context) {
 }
 
 func createReceipt(r receipt) receipt {
-	r.ID = strconv.Itoa(len(receipts) + 1)
+	r.ID = uuid.New().String()
 
 	receipts = append(receipts, r)
 	return r
